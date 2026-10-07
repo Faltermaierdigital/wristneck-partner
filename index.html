@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Wristneck Partner Brief</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@400;500;600&display=swap">
+<style>
+/* Ein bewusst einheitliches Markenbild (Leinen, Tiefgrün, Gold) – wie der Shop, kein Dunkelmodus */
+:root{
+  --bg:#F1EEE6; --surface:#E7E2D6; --card:#FBF9F4; --fg:#1B241F; --muted:#56635B;
+  --brand:#22382C; --gold:#B08D4A; --line:#D9D2C2;
+  --display:"Marcellus", Georgia, "Times New Roman", serif;
+  --body:"Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:var(--brand)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+@media (max-width:600px){.wrap{padding:0 16px}}
+
+/* Kopfzeile */
+.top{position:sticky;top:0;z-index:20;background:rgba(241,238,230,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:64px}
+.top img{height:46px;width:auto}
+.draft{font:600 11.5px/1.2 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--brand);border:1px solid var(--gold);background:#F6EEDC;border-radius:999px;padding:7px 12px;white-space:nowrap}
+@media (max-width:520px){.draft{font-size:10px;padding:6px 9px;letter-spacing:.08em}.top img{height:36px}}
+
+/* Scroll-Hero mit Bildsequenz */
+.hero{position:relative;height:300vh}
+.stage{position:sticky;top:64px;height:calc(100vh - 64px);height:calc(100svh - 64px);overflow:hidden}
+.stage canvas,.stage .poster{position:absolute;inset:0;width:100%;height:100%}
+.stage .poster{object-fit:contain;object-position:68% 50%}
+.stage.ready .poster{visibility:hidden}
+.copy{position:absolute;left:max(24px,calc((100vw - 1180px)/2 + 24px));top:50%;transform:translateY(-50%);width:min(420px,40vw)}
+.step{position:absolute;top:0;left:0;right:0;transform:translateY(-50%);transition:opacity .5s ease,transform .5s ease}
+.step:not(.on){opacity:0;transform:translateY(calc(-50% + 14px));pointer-events:none}
+.eyebrow{font:600 12px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 12px}
+.step h1,.step h2{font:400 clamp(34px,4.6vw,58px)/1.08 var(--display);color:var(--brand);margin:0 0 14px;text-wrap:balance}
+.step p{margin:0;color:var(--muted);font-size:18px;max-width:34ch}
+.progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--surface)}
+.progress i{display:block;height:100%;width:0;background:var(--gold)}
+@media (max-width:760px){
+  .stage .poster{object-position:50% 20%}
+  .copy{left:16px;right:16px;width:auto;top:auto;bottom:28px;transform:none;height:170px}
+  .step{top:auto;bottom:0;transform:none}
+  .step:not(.on){transform:translateY(14px)}
+  .step h1,.step h2{font-size:32px}
+  .step p{font-size:16px}
+}
+
+/* Deadline-Band */
+.deadline{background:var(--brand);color:var(--bg);padding:56px 0}
+.dl{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center}
+.dl-date{width:132px;border:1px solid var(--gold);border-radius:8px;text-align:center;padding:14px 10px;color:#E9D7AE}
+.dl-date b{display:block;font:400 56px/1 var(--display);color:var(--bg);margin:4px 0}
+.dl-date span{font:600 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase}
+.deadline .kicker{color:#E9D7AE}
+.deadline h2{font:400 clamp(26px,3vw,38px)/1.15 var(--display);margin:0 0 12px;color:var(--bg);text-wrap:balance}
+.deadline p{margin:0;color:#D6DCD4;max-width:64ch;font-size:17px}
+.deadline p b{color:#E9D7AE}
+@media (max-width:600px){.dl{grid-template-columns:1fr;gap:20px}.deadline{padding:44px 0}}
+
+/* Abschnitte */
+section.block{padding:96px 0;border-top:1px solid var(--line)}
+@media (max-width:600px){section.block{padding:64px 0}}
+.kicker{font:600 12px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin:0 0 10px}
+h2.title{font:400 clamp(30px,3.6vw,44px)/1.12 var(--display);color:var(--brand);margin:0 0 18px;max-width:22ch;text-wrap:balance}
+.lede{font-size:18px;color:var(--muted);max-width:62ch;margin:0}
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:start}
+@media (max-width:860px){.two{grid-template-columns:1fr;gap:32px}}
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.fact{background:var(--card);padding:20px}
+.fact b{display:block;font:400 30px/1.1 var(--display);color:var(--brand);font-variant-numeric:tabular-nums}
+.fact span{font-size:14px;color:var(--muted)}
+
+/* Laufband */
+.marquee{overflow:hidden;margin-top:56px;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.marquee .track{display:flex;gap:16px;width:max-content;animation:run 60s linear infinite}
+.marquee img{width:180px;height:180px;object-fit:cover;border-radius:6px;background:#fff}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* Galerie */
+.tabs{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 24px}
+.tabs button{font:500 14px/1 var(--body);color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:999px;padding:10px 16px;cursor:pointer}
+.tabs button[aria-pressed="true"]{background:var(--brand);border-color:var(--brand);color:var(--bg)}
+.tabs button:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(220px,45%),1fr));gap:20px}
+.item{margin:0;background:var(--card);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.item .ph{aspect-ratio:1;background:#fff;overflow:hidden}
+.item img{width:100%;height:100%;object-fit:contain;transition:transform .6s ease}
+.item:hover img{transform:scale(1.04)}
+.item figcaption{padding:12px 14px;font-size:14px;line-height:1.35}
+.item figcaption small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.item[hidden]{display:none}
+
+/* Muse-Szene aus dem Shop (sections/muse-split.liquid), Variablen auf die Mappe gemappt */
+.muse-split{--color-accent:var(--gold);--color-brand:var(--brand);--color-background:var(--bg);--color-foreground-muted:var(--muted);--page-margin:24px;background:var(--bg)}
+.muse-split .eyebrow{font:600 12px/1.3 var(--body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.muse-split__title,.muse-split__subtitle{font-family:var(--display);font-weight:400;color:var(--brand)}
+.muse-lead{padding-bottom:24px}
+.muse-need{padding:8px 0 72px}
+.muse-note{max-width:760px;margin:0 auto;text-align:center;color:var(--muted);font-size:15px}
+
+  /* Festhalten mit bildschirmfüllender Bühne: Inhalt mittig, keine leere Fläche unter einer zu kurzen Bühne.
+     Extra-Scrollweg 140vh, damit Hand/Kette langsam einfahren (Josef 02.10.: „zu schnell, mit einem Scroll“) */
+  .muse-split { position: relative; height: calc(100svh + 140vh); }
+  .muse-split__stage {
+    position: sticky;
+    top: 64px;
+    height: calc(100svh - 64px);
+    overflow: hidden;
+    display: grid;
+    /* Inhalt oben als Block (Zeilen nur so hoch wie der Inhalt -> keine endlos lange Kette auf hohen Bildschirmen).
+       Kein Header-Abstand: der Header ist nach dem Hero schon weggescrollt; mittig zentriert gab es eine große Lücke
+       zur Sektion davor (Josef 02.10.: „der Platzhalter ist zu hoch“) */
+    grid-template-rows: auto auto auto;
+    align-content: center;
+    row-gap: 1.2rem;
+    padding: 1.5rem var(--page-margin);
+    box-sizing: border-box;
+  }
+  .muse-split__head { text-align: center; position: relative; z-index: 2; }
+  .muse-split__head .eyebrow { margin: 0 0 0.3rem; }
+  .muse-split__title { margin: 0; font-size: clamp(2.2rem, 5vw, 4.2rem); line-height: 1; }
+  .muse-split__amp { color: var(--color-accent); }
+  .muse-split__badge {
+    display: inline-block;
+    margin: 0.7rem 0 0;
+    padding: 0.2rem 0.8rem;
+    border: 1px solid var(--color-accent);
+    border-radius: 999px;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    background: var(--color-background);
+    position: relative;
+  }
+  /* Trennlinie: goldene Punktkette zwischen den Hälften – beginnt unter dem Kopf, endet über dem Button (Josef 02.10.: keine losen Punkte am „&“ und unter dem Button) */
+  .muse-split__chain {
+    position: absolute;
+    left: 50%;
+    top: 1rem;
+    bottom: 0.4rem;
+    width: 10px;
+    margin-left: -5px;
+    background: radial-gradient(circle, var(--color-accent) 2.4px, transparent 3px) center top / 10px 13px repeat-y;
+    transform-origin: top center;
+    z-index: 1;
+  }
+  .muse-split__intro {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(34vw, 260px);
+    transform: translate(-50%, -45%);
+    z-index: 3;
+    visibility: hidden; /* nur im Ablauf sichtbar, das Endbild braucht ihn nicht */
+  }
+  .muse-split__panels {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    /* Bild-Zeile und Text-Zeile gemeinsam -> Hand und Büste stehen auf einer Linie, auch wenn ein Text länger umbricht */
+    grid-template-rows: auto auto;
+    grid-auto-flow: column;
+    column-gap: 2.5rem;
+    min-height: 0;
+    position: relative;
+    text-align: center;
+  }
+  .muse-split__panel { display: contents; }
+  .muse-split__art { display: flex; align-items: flex-end; justify-content: center; overflow: hidden; }
+  .muse-split__art svg, .muse-split__img { width: 100%; height: auto; max-height: 52vh; display: block; object-fit: contain; object-position: 50% 100%; }
+  .muse-split__copy { padding-top: 0.6rem; max-width: 34ch; margin-inline: auto; }
+  .muse-split__subtitle { margin: 0 0 0.3rem; font-size: clamp(1.3rem, 2.2vw, 1.8rem); }
+  .muse-split__text { color: var(--color-foreground-muted); font-size: 0.95rem; }
+  .muse-split__text p { margin: 0; }
+  .muse-split__cta { text-align: center; position: relative; z-index: 2; }
+  /* Geschlossene Schlaufe/Kette nur im Ablauf: blendet aus, sobald Hand bzw. Hals „durch“ sind (Josef 02.10.) */
+  .muse-split__close { opacity: 0; }
+  @media (prefers-reduced-motion: reduce) {
+    .muse-split { height: auto; }
+    .muse-split__stage { position: relative; height: auto; }
+  }
+
+  @media (max-width: 760px) {
+    .muse-split__panels { column-gap: 1.2rem; }
+    .muse-split__art svg, .muse-split__img { max-height: 40vh; }
+    .muse-split__text { font-size: 0.85rem; }
+    .muse-split__intro { width: 46vw; }
+  }
+
+/* Karten */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:20px;margin-top:36px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:6px;padding:24px}
+.card h3{font:400 22px/1.2 var(--display);color:var(--brand);margin:0 0 8px}
+.card p{margin:0;color:var(--muted);font-size:15px}
+.card.new{border-color:var(--gold)}
+.card .tag{display:inline-block;font:600 11px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+
+/* Standards */
+.std{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.std li{background:var(--card);padding:20px 22px;display:grid;grid-template-columns:28px 1fr;gap:12px}
+.std .chk{width:22px;height:22px;border-radius:50%;background:var(--brand);color:var(--bg);display:grid;place-items:center;font-size:13px;margin-top:2px}
+.std b{display:block;color:var(--fg)}
+.std span{color:var(--muted);font-size:14.5px}
+
+/* Ablauf */
+.flow{list-style:none;padding:0;margin:36px 0 0;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
+@media (max-width:860px){.flow{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.flow{grid-template-columns:1fr}}
+.flow li{counter-increment:s;border-top:2px solid var(--gold);padding-top:16px}
+.flow li::before{content:counter(s,decimal-leading-zero);font:400 28px/1 var(--display);color:var(--gold);display:block;margin-bottom:10px}
+.flow b{display:block;font-weight:600;margin-bottom:4px}
+.flow span{color:var(--muted);font-size:15px}
+
+/* Kontakt */
+.contact{background:var(--brand);color:var(--bg);border-radius:8px;padding:48px;display:grid;grid-template-columns:1.2fr .8fr;gap:32px;align-items:center}
+.contact h2{font:400 clamp(28px,3.2vw,40px)/1.15 var(--display);margin:0 0 12px;color:var(--bg)}
+.contact p{margin:0;color:#D6DCD4}
+.contact .who{font-size:15px;line-height:1.8}
+.contact .who b{color:#E9D7AE;font-weight:600}
+.contact a{color:#E9D7AE}
+@media (max-width:760px){.contact{grid-template-columns:1fr;padding:32px 24px}}
+footer{padding:40px 0 56px;color:var(--muted);font-size:13.5px}
+footer .note{border:1px dashed var(--gold);border-radius:6px;padding:14px 16px;background:#F6EEDC;color:var(--fg);margin-bottom:16px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .marquee .track{animation:none}
+  .item img,.step{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <img src="img/logo.png" alt="Wristneck – The Charms Community" width="137" height="46">
+    <span class="draft">Draft preview of our shop</span>
+  </div>
+</header>
+
+<section class="hero" id="hero" data-frames="90">
+  <div class="stage" id="stage">
+    <picture>
+      <source media="(max-width:760px)" srcset="hero/hero-m-0001.webp">
+      <img class="poster" src="hero/hero-d-0001.webp" alt="Apple Watch with Wristneck charms" fetchpriority="high">
+    </picture>
+    <canvas id="seq" aria-hidden="true"></canvas>
+    <div class="copy">
+      <div class="step on" data-at="0">
+        <p class="eyebrow">Wristneck · Partner brief</p>
+        <h1>Your band. Your story.</h1>
+        <p>We turn the Apple Watch into a piece of jewellery. This is a draft preview of our upcoming online shop.</p>
+      </div>
+      <div class="step" data-at="0.22">
+        <p class="eyebrow">Slide-on charms</p>
+        <h2>Click. Done.</h2>
+        <p>Slide on, plug in, finished – no tools needed.</p>
+      </div>
+      <div class="step" data-at="0.48">
+        <p class="eyebrow">Mix &amp; match</p>
+        <h2>Combine until it fits.</h2>
+        <p>Many colours, both band widths, dozens of charms.</p>
+      </div>
+      <div class="step" data-at="0.8">
+        <p class="eyebrow">Our promise</p>
+        <h2>A one-of-a-kind on the wrist.</h2>
+        <p>Scroll on to see our range and what we are looking for.</p>
+      </div>
+    </div>
+    <div class="progress" aria-hidden="true"><i id="bar"></i></div>
+  </div>
+</section>
+
+<section class="deadline" id="deadline" aria-labelledby="dl-h">
+  <div class="wrap dl">
+    <div class="dl-date"><span>Sat</span><b>10</b><span>Oct 2026</span></div>
+    <div>
+      <p class="kicker">Partner selection deadline</p>
+      <h2 id="dl-h">On Saturday, 10 October we choose our partners.</h2>
+      <p>On that day our sample orders go out – for each item to the supplier with the lowest price who provides the EU documents. We want our whole range launch-ready for the Christmas season, so offers, sample costs and EU documents must reach us by <b>Friday, 9 October</b>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="about">
+  <div class="wrap two">
+    <div>
+      <p class="kicker">Who we are</p>
+      <h2 class="title">A German brand for Apple Watch bands and charms.</h2>
+      <p class="lede">Wristneck is “The Charms Community”: bands, charms and accessories that let every customer style her Apple Watch like jewellery. We sell under our own brand in our own online shop and on EU marketplaces – starting in Germany, and we definitely plan to scale across all of Europe. Next to our current range, our own Wristneck collections are a clear focus for the future. We import into the EU under our own name and take full responsibility for product safety – that is why the EU documents matter so much to us.</p>
+    </div>
+    <div class="facts">
+      <div class="fact"><b>60+</b><span>items in our range</span></div>
+      <div class="fact"><b>Europe</b><span>Germany first, then scaling EU-wide</span></div>
+      <div class="fact"><b>EU</b><span>importer, EORI registered</span></div>
+      <div class="fact"><b>Women</b><span>18–45, style- and gift-driven</span></div>
+    </div>
+  </div>
+  <div class="marquee" aria-hidden="true"><div class="track" id="track"></div></div>
+</section>
+
+<section class="block" id="range">
+  <div class="wrap">
+    <p class="kicker">Our look</p>
+    <h2 class="title">Every product photographed in our own style.</h2>
+    <p class="lede">Calm linen and forest-green tones, gold details, one clean product shot per variant. These images are from the draft of our shop – no supplier logos, no busy backgrounds.</p>
+    <div class="tabs" role="group" aria-label="Filter products">
+      <button type="button" data-f="all" aria-pressed="true">All</button>
+      <button type="button" data-f="charm" aria-pressed="false">Charms</button>
+      <button type="button" data-f="jewel" aria-pressed="false">Jewellery bands</button>
+      <button type="button" data-f="band" aria-pressed="false">Bands</button>
+    </div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="block muse-lead" id="muse">
+  <div class="wrap">
+    <p class="kicker">New line</p>
+    <h2 class="title">Made for the Meta Muse Charm.</h2>
+    <p class="lede">Meta’s new <b>Muse Charm</b> is coming to Europe – and we are building a dedicated line around it. Our customers wear it on a short wrist loop or as a necklace, combined with our charms. Scroll on to see the scene from our shop.</p>
+  </div>
+</section>
+<section
+  class="muse-split full-width"
+  data-muse-split
+>
+  <div class="muse-split__stage">
+    <header class="muse-split__head">
+      <p class="eyebrow">Made for the Meta Muse Charm</p>
+      <h2 class="muse-split__title">Wrist <span class="muse-split__amp">&amp;</span> Neck</h2>
+      <p class="muse-split__badge">From December 2026</p>
+    </header>
+    <svg class="muse-split__intro" viewBox="-60 -60 120 130" aria-hidden="true"><g class="muse-split__device">
+    <rect x="-40" y="-40" width="80" height="80" rx="22" fill="#1E2622"/>
+    <rect x="-33" y="-33" width="66" height="66" rx="16" fill="#26332C"/>
+    <circle cx="0" cy="-25" r="2.4" fill="#0E1411"/>
+    <text x="0" y="8" text-anchor="middle" font-size="19" font-family="Marcellus, serif" fill="var(--color-accent)">11:22</text>
+  </g></svg>
+    <div class="muse-split__panels">
+      <div class="muse-split__chain" aria-hidden="true"></div>
+      <div class="muse-split__panel muse-split__panel--wrist">
+        <div class="muse-split__art">
+            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Hand with a wrist loop holding a Muse Charm">
+              <g class="muse-split__hand" fill="var(--color-background)" stroke="var(--color-brand)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M150 500 L162 335 C150 300 140 270 142 240 L146 170 C147 160 160 158 162 170 L166 235 L170 140 C171 128 186 127 187 140 L190 228 L195 125 C196 112 212 112 213 125 L214 228 L220 140 C221 128 236 128 236 141 L234 245 L248 205 C252 193 268 196 265 210 L250 290 C246 312 240 325 238 335 L250 500"/>
+              </g>
+              <g class="muse-split__loop">
+                <g fill="none" stroke="var(--color-accent)" stroke-width="3.2" stroke-linecap="round">
+                  <path d="M200 269 C181 287 166 312 161.3 345"/>
+                  <path d="M200 274 C185 291 172 312 162.1 337"/>
+                  <path d="M200 269 C219 287 234 312 238.7 345"/>
+                  <path d="M200 274 C215 291 228 312 238.1 337"/>
+                  <g class="muse-split__close">
+                    <path d="M161.3 345 C157 384 243 384 238.7 345"/>
+                    <path d="M162.1 337 C159 372 241 372 238.1 337"/>
+                  </g>
+                </g>
+                <g class="muse-split__charms">
+                  <circle cx="243" cy="330" r="3.8" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+                  <path d="M245 333 L248 340 M244 334 L251 351 M246.5 332 L258 337" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
+                  <g transform="translate(248 339) rotate(12) scale(0.7)" fill="none" stroke="var(--color-accent)" stroke-linecap="round"><circle cx="0" cy="5" r="4.5" stroke-width="2.5"/><path d="M0 9.5 L0 24 M0 19 L4 19 M0 22.5 L3.2 22.5" stroke-width="2.6"/></g>
+                  <path transform="translate(258 336) rotate(18) scale(0.7)" d="M0 4 C-2 -1 -10 -1 -10 5 C-10 10 -4 14 0 18 C4 14 10 10 10 5 C10 -1 2 -1 0 4 Z" fill="var(--color-background)" stroke="var(--color-accent)" stroke-width="2.6" stroke-linejoin="round"/>
+                  <g transform="translate(251 349) rotate(-10) scale(0.7)"><path d="M-5 9 L-5 5 C-5 -1 5 -1 5 5 L5 9" fill="none" stroke="var(--color-brand)" stroke-width="2.8"/><rect x="-8" y="8" width="16" height="13" rx="3" fill="var(--color-brand)" stroke="var(--color-background)" stroke-width="1.2"/><circle cx="0" cy="13.5" r="1.9" fill="var(--color-background)"/><rect x="-0.9" y="14" width="1.8" height="4" fill="var(--color-background)"/></g>
+                </g>
+                <g transform="translate(200 215)"><g class="muse-split__device">
+    <rect x="-40" y="-40" width="80" height="80" rx="22" fill="#1E2622"/>
+    <rect x="-33" y="-33" width="66" height="66" rx="16" fill="#26332C"/>
+    <circle cx="0" cy="-25" r="2.4" fill="#0E1411"/>
+    <text x="0" y="8" text-anchor="middle" font-size="19" font-family="Marcellus, serif" fill="var(--color-accent)">11:22</text>
+  </g><path class="muse-split__threads" d="M-2.6 38 C-3 44 -2 50 0 54 M2.6 38 C3 44 2 50 0 54" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"/></g>
+              </g>
+            </svg>
+        </div>
+        <div class="muse-split__copy">
+          <h3 class="muse-split__subtitle">At the wrist.</h3>
+          <div class="muse-split__text"><p>Thread the loop, hang the Muse Charm – and combine it with your charms.</p></div>
+        </div>
+      </div>
+      <div class="muse-split__panel muse-split__panel--neck">
+        <div class="muse-split__art">
+            <svg viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Woman wearing a chain with a Muse Charm">
+              <g class="muse-split__bust" fill="var(--color-background)" stroke="var(--color-brand)" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M182 220 C165 228 128 232 104 246 C84 258 76 284 74 320 L69 530 L331 530 L326 320 C324 284 316 258 296 246 C272 232 235 228 218 220 Z"/>
+                <path d="M112 312 C118 356 120 412 116 500 M288 312 C282 356 280 412 284 500" fill="none"/>
+                <path d="M106 300 C102 312 100 322 99 334 M294 300 C298 312 300 322 301 334" fill="none" stroke-width="1.3"/>
+                <path d="M150 254 C165 247 178 249 188 254 M212 254 C222 249 235 247 250 254" fill="none" stroke-width="1.4"/>
+                <path d="M138 272 C166 306 234 306 262 272" fill="none" stroke-width="1.6"/>
+                <path d="M124 288 C134 252 138 216 136 168 C134 116 160 86 200 86 C240 86 266 116 264 168 C262 216 266 252 276 288 C256 284 244 272 238 256 C233 240 228 220 218 205 L182 205 C172 220 167 240 162 256 C156 272 144 284 124 288 Z"/>
+                <rect x="182" y="160" width="36" height="64" stroke="none"/>
+                <path d="M183 192 L182 222 M217 192 L218 222" fill="none"/>
+                <ellipse cx="200" cy="150" rx="37" ry="46"/>
+                <path d="M192 96 C180 120 169 140 165 170 M198 95 C216 99 232 112 240 134" fill="none" stroke-width="1.7"/>
+                <path d="M180 152 q7 5 14 0 M206 152 q7 5 14 0 M179 143 q8 -4 15 -1 M206 142 q8 -3 15 1 M200 158 l-3 12 h5" fill="none" stroke-width="1.5"/>
+                <path d="M191 181 q9 5 18 0 M191 181 q4.5 -3 9 -1 q4.5 -2 9 1" fill="none" stroke-width="1.5"/>
+              </g>
+              <g class="muse-split__necklace">
+                <g fill="none" stroke="var(--color-accent)" stroke-width="4.2" stroke-linecap="round" stroke-dasharray="0 8.5">
+                  <path d="M183 224 C185 258 193 284 200 300"/>
+                  <path d="M217 224 C215 258 207 284 200 300"/>
+                  <path class="muse-split__close" d="M183 224 C181 200 219 200 217 224"/>
+                </g>
+                <path class="muse-split__threads" d="M200 299 C197 302 197 306 197.4 310 M200 299 C203 302 203 306 202.6 310" fill="none" stroke="var(--color-accent)" stroke-width="1.6" stroke-linecap="round"/>
+                <g class="muse-split__charms">
+                  <path d="M199 308 L183 372 M199.5 308 L194 382 M200.5 308 L205 369 M201 308 L215 379" stroke="var(--color-accent)" stroke-width="1.5" stroke-linecap="round"/>
+                  <path transform="translate(183 371) rotate(-14) scale(0.72)" d="M0 4 C-2 -1 -10 -1 -10 5 C-10 10 -4 14 0 18 C4 14 10 10 10 5 C10 -1 2 -1 0 4 Z" fill="var(--color-background)" stroke="var(--color-accent)" stroke-width="2.6" stroke-linejoin="round"/>
+                  <g transform="translate(205 368) rotate(8) scale(0.72)" fill="none" stroke="var(--color-accent)" stroke-linecap="round"><circle cx="0" cy="5" r="4.5" stroke-width="2.5"/><path d="M0 9.5 L0 24 M0 19 L4 19 M0 22.5 L3.2 22.5" stroke-width="2.6"/></g>
+                  <g transform="translate(194 381) rotate(-6) scale(0.72)"><path d="M-5 9 L-5 5 C-5 -1 5 -1 5 5 L5 9" fill="none" stroke="var(--color-brand)" stroke-width="2.8"/><rect x="-8" y="8" width="16" height="13" rx="3" fill="var(--color-brand)" stroke="var(--color-background)" stroke-width="1.2"/><circle cx="0" cy="13.5" r="1.9" fill="var(--color-background)"/><rect x="-0.9" y="14" width="1.8" height="4" fill="var(--color-background)"/></g>
+                  <path transform="translate(215 378) rotate(16) scale(0.72)" d="M0 4 C-2 -1 -10 -1 -10 5 C-10 10 -4 14 0 18 C4 14 10 10 10 5 C10 -1 2 -1 0 4 Z" fill="var(--color-brand)" stroke="var(--color-background)" stroke-width="1.2"/>
+                </g>
+                <g transform="translate(200 338) scale(0.72)"><g class="muse-split__device">
+    <rect x="-40" y="-40" width="80" height="80" rx="22" fill="#1E2622"/>
+    <rect x="-33" y="-33" width="66" height="66" rx="16" fill="#26332C"/>
+    <circle cx="0" cy="-25" r="2.4" fill="#0E1411"/>
+    <text x="0" y="8" text-anchor="middle" font-size="19" font-family="Marcellus, serif" fill="var(--color-accent)">11:22</text>
+  </g></g>
+              </g>
+            </svg>
+        </div>
+        <div class="muse-split__copy">
+          <h3 class="muse-split__subtitle">Around the neck.</h3>
+          <div class="muse-split__text"><p>Worn on a chain, the Muse Charm becomes a piece of jewellery.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="muse-need">
+  <div class="wrap"><p class="muse-note">We need: wrist loops and necklace chains ending in a thin cord loop (girth hitch through the Muse eyelet), a necklace holder with the eyelet on top, and matching charms. Exact Muse dimensions follow as soon as Meta publishes them.</p></div>
+</section>
+
+<section class="block" id="looking">
+  <div class="wrap">
+    <p class="kicker">What we are looking for</p>
+    <h2 class="title">New products for a growing range.</h2>
+    <p class="lede">We add new designs every month. If you make any of these, we would like to see your catalogue – with photos without logo.</p>
+    <div class="cards">
+      <div class="card"><h3>Charms &amp; charm sets</h3><p>Slide-on charms, studs for the band holes, dangles, letters and themed sets – in gold, rose gold and silver tones.</p></div>
+      <div class="card"><h3>Jewellery bands</h3><p>Chain bands with charms, pearl and bead bands, crystal and resin bands, scrunchies with a feminine look.</p></div>
+      <div class="card"><h3>Classic bands in many colours</h3><p>Silicone, nylon, Milanese, stainless steel and Ultra bands – always in both widths, 38–42 mm and 42–49 mm.</p></div>
+      <div class="card new"><span class="tag">New line</span><h3>Wrist loops, lanyards &amp; holders</h3><p>For the Meta “Muse Charm” and AirPods Pro cases: short wrist loops and necklace chains ending in a thin cord loop, plus a holder with an eyelet on top.</p></div>
+      <div class="card"><h3>Branded packaging</h3><p>Cream band boxes and velvet pouches with our logo in two colours, plus our importer label on every bag.</p></div>
+      <div class="card new"><span class="tag">Next step</span><h3>Our own collections</h3><p>In the future we will focus on our own Wristneck collections – exclusive designs developed together with our partners (OEM/ODM), with our logo on the products. Factories with their own design and mould capacity are especially welcome.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="standards">
+  <div class="wrap">
+    <p class="kicker">Our standards</p>
+    <h2 class="title">We only buy what we can legally sell in the EU.</h2>
+    <p class="lede">For every item we need the following. Suppliers who can provide it get the order – at the same price, EU-ready always wins.</p>
+    <ul class="std">
+      <li><span class="chk">✓</span><div><b>Manufacturer data (GPSR)</b><span>Factory name, full postal address and email for every product page.</span></div></li>
+      <li><span class="chk">✓</span><div><b>Nickel release EN 1811 / EN 12472</b><span>For all metal parts with skin contact: buckles, connectors, chains, charms.</span></div></li>
+      <li><span class="chk">✓</span><div><b>Lead &amp; cadmium (REACH)</b><span>For metal parts, rhinestones, glass and crystal beads, enamel and paint.</span></div></li>
+      <li><span class="chk">✓</span><div><b>PAH / azo dyes</b><span>PAH for silicone, TPU and rubber · azo dyes for nylon and fabric.</span></div></li>
+      <li><span class="chk">✓</span><div><b>Our importer label</b><span>We send the text – it goes on every retail bag.</span></div></li>
+      <li><span class="chk">✓</span><div><b>Photos without logo</b><span>On a plain white background, with written permission to use them in our shop, on marketplaces and in ads.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block" id="process">
+  <div class="wrap">
+    <p class="kicker">How we work</p>
+    <h2 class="title">Clear steps, long-term partners.</h2>
+    <ol class="flow">
+      <li><b>Quote</b><span>Prices at 100 / 500 / 1,000 pcs, MOQ per colour and size, lead time – in the Alibaba chat.</span></li>
+      <li><b>Samples</b><span>One sample per colour, ordered and paid via Alibaba Trade Assurance.</span></li>
+      <li><b>Our check</b><span>We photograph, measure and test every sample, incl. a nickel check, before we decide.</span></li>
+      <li><b>Orders &amp; reorders</b><span>First orders of about 100–300 pcs per item, reorders of 500–1,000 pcs as the range grows.</span></li>
+    </ol>
+  </div>
+</section>
+
+<section class="block" id="contact">
+  <div class="wrap">
+    <div class="contact">
+      <div>
+        <h2>Let’s build this range together.</h2>
+        <p>We are scaling across Europe and are looking for long-term partners who grow with us. Send us your catalogue, your best prices and your EU documents by <b style="color:#E9D7AE">Friday, 9 October</b> – on Saturday we choose our partners and our sample orders go out. We answer fast and we pay on time.</p>
+      </div>
+      <div class="who">
+        <b>Josef Faltermaier</b> · Founder<br>
+        Alibaba chat: Wristneck / Josef<br>
+        Email: <a href="mailto:info@wristneck.de">info@wristneck.de</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="note"><b>Please note:</b> this page is a draft preview of our upcoming Wristneck online shop and brand concept, made for our suppliers. Designs, texts and range may still change before launch.</div>
+    © 2026 Wristneck · All product images © Wristneck
+  </div>
+</footer>
+
+<script>
+(() => {
+  // Galerie-Daten (eigene Shop-Bilder, keine Hüllen)
+  const items = [
+    ['c-strass-ring','Rhinestone charm sets','21 sets · slide + stud','charm'],
+    ['c-metall','Metal charm sets','6 sets · gold / rose / silver','charm'],
+    ['c-buchstabe','Rhinestone letters','A–Z','charm'],
+    ['c-baer','Bear charm sets','5 sets','charm'],
+    ['c-herz-stern','Heart, star &amp; flower sets','6 sets','charm'],
+    ['c-pfote','Paw charm sets','3 sets','charm'],
+    ['c-schaf','Ceramic sheep charms','9 expressions','charm'],
+    ['c-strass-set','Rhinestone charm set','3 metal tones','charm'],
+    ['c-evil-eye','Evil eye charm','gold tone','charm'],
+    ['c-strass-motiv','Pavé slide charms','4 motifs','charm'],
+    ['c-dangle','Dangle stud charms','4 motifs','charm'],
+    ['b-kette','Chain charm band','22 designs','jewel'],
+    ['b-perlen-charms','Bead band with charms','2 designs','jewel'],
+    ['b-blumen-schmetterling','Flower &amp; butterfly band','2 designs','jewel'],
+    ['b-perlen-strass','Pearl rhinestone band','3 designs','jewel'],
+    ['b-herz-perlen','Heart pearl band','gold tone','jewel'],
+    ['b-boehmisch','Bohemian bead band','3 designs','jewel'],
+    ['b-kristall','Crystal bead metal band','4 designs','jewel'],
+    ['b-harz','Transparent resin band','7 designs','jewel'],
+    ['b-organza','Organza scrunchie','5 designs','jewel'],
+    ['b-stickerei','Embroidered scrunchie','4 designs','jewel'],
+    ['b-perlen-scrunchie','Pearl scrunchie','elastic','jewel'],
+    ['b-silikon','Silicone sport band','74 colours','band'],
+    ['b-blumenpraegung','Embossed flower silicone','7 designs','band'],
+    ['b-klavier','Two-tone silicone','10 designs','band'],
+    ['b-milanese','Milanese loop','8 designs','band'],
+    ['b-glieder','Stainless link band','5 designs','band'],
+    ['b-wabe','Ultra honeycomb link band','7 designs','band'],
+    ['b-alpine','Alpine loop','17 designs','band'],
+    ['b-klett','Velcro nylon band','47 designs','band'],
+    ['b-welle','Wave-texture nylon loop','12 designs','band'],
+    ['b-geflochten','Braided magnetic band','20 designs','band'],
+    ['b-dackel','Dachshund nylon band','5 designs','band'],
+    ['b-ocean','Ocean band for Ultra','14 designs','band']
+  ];
+  const grid = document.getElementById('grid');
+  grid.innerHTML = items.map(([k, t, s, c]) =>
+    `<figure class="item" data-c="${c}"><div class="ph"><img src="img/${k}.jpg" alt="${t.replace(/&amp;/g,'&')}" loading="lazy" width="900" height="900"></div><figcaption>${t}<small>${s}</small></figcaption></figure>`).join('');
+  const btns = document.querySelectorAll('.tabs button');
+  btns.forEach((b) => b.addEventListener('click', () => {
+    const f = b.dataset.f;
+    btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+    grid.querySelectorAll('.item').forEach((it) => { it.hidden = !(f === 'all' || it.dataset.c === f); });
+  }));
+
+  // Laufband mit den Charm-Bildern (doppelt für die Endlosschleife)
+  const charms = items.filter((i) => i[3] !== 'band').map((i) => `<img src="img/${i[0]}.jpg" alt="" loading="lazy" width="180" height="180">`).join('');
+  document.getElementById('track').innerHTML = charms + charms;
+
+  // Scroll-Hero: Bildsequenz auf der Canvas, an den Scrollfortschritt gekoppelt
+  const hero = document.getElementById('hero'), stage = document.getElementById('stage');
+  const canvas = document.getElementById('seq'), ctx = canvas.getContext('2d'), bar = document.getElementById('bar');
+  const steps = [...document.querySelectorAll('.step')];
+  const n = parseInt(hero.dataset.frames, 10) || 90;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const mobile = matchMedia('(max-width:760px)').matches;
+  const src = (i) => `hero/${mobile ? 'hero-m-' : 'hero-d-'}${String(i + 1).padStart(4, '0')}.webp`;
+  const imgs = [];
+  let cur = 0, dpr = 1;
+
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    const w = Math.round(canvas.clientWidth * dpr), h = Math.round(canvas.clientHeight * dpr);
+    if (canvas.width !== w) canvas.width = w;
+    if (canvas.height !== h) canvas.height = h;
+    draw();
+  }
+  function draw() {
+    let i = cur;
+    while (i > 0 && !(imgs[i] && imgs[i].complete && imgs[i].naturalWidth)) i--;
+    const img = imgs[i];
+    if (!img || !img.naturalWidth) return;
+    const cw = canvas.width, ch = canvas.height, iw = img.naturalWidth, ih = img.naturalHeight;
+    let s, x, y;
+    if (mobile) { s = Math.min(cw * 1.05 / iw, ch * 0.62 / ih); x = (cw - iw * s) / 2; y = ch * 0.02; }
+    // Desktop: Die Uhr füllt nur ca. 35 % der Bildbreite (Rest ist transparenter Rand). Sie bleibt in der rechten Hälfte, max. 42 % der Breite, und überdeckt den Text nicht
+    else { s = Math.min(ch * 0.94 / ih, (cw * 0.42) / (0.35 * iw)); x = cw * 0.70 - iw * s * 0.515; y = (ch - ih * s) / 2; }
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(img, x, y, iw * s, ih * s);
+  }
+  function update() {
+    const r = hero.getBoundingClientRect();
+    const total = hero.offsetHeight - stage.offsetHeight;
+    const p = Math.min(1, Math.max(0, -r.top / (total || 1)));
+    if (bar) bar.style.width = (p * 100) + '%';
+    const f = reduce ? 0 : Math.round(p * (n - 1));
+    if (f !== cur) { cur = f; draw(); }
+    let k = 0;
+    steps.forEach((el, j) => { if (p >= parseFloat(el.dataset.at)) k = j; });
+    steps.forEach((el, j) => el.classList.toggle('on', j === k));
+  }
+
+  // Ladereihenfolge: Startbild, dann jedes 6. Bild, dann der Rest
+  const order = [0];
+  for (let i = 6; i < n; i += 6) order.push(i);
+  for (let i = 1; i < n; i++) if (!order.includes(i)) order.push(i);
+  order.forEach((i) => {
+    const im = new Image();
+    im.decoding = 'async';
+    im.onload = () => { if (i === 0) { stage.classList.add('ready'); size(); } else if (i <= cur) draw(); };
+    im.src = src(i);
+    imgs[i] = im;
+  });
+
+  let ticking = false;
+  const onScroll = () => { if (ticking) return; ticking = true; requestAnimationFrame(() => { ticking = false; update(); }); };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => { size(); update(); });
+  update();
+})();
+</script>
+<script src="js/gsap.min.js"></script>
+<script src="js/ScrollTrigger.min.js"></script>
+<script src="js/muse-split.js" defer></script>
+</body>
+</html>
